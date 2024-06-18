@@ -8,6 +8,9 @@ const calcTip = (bill) => {
   }
 };
 
+// i want see arguments object of calcTip function
+console.log(calcTip.arguments);
+
 let bills = [125, 555, 44];
 
 let tips = [];

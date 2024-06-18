@@ -16,3 +16,10 @@ function checkWinner(dolphineScore, koalasScore) {
 }
 
 checkWinner(avgKoalas, avgDolphins);
+
+// const arr = [1, 2, 54, 60, 11, 19];
+// const isBelow = (value) => value > 40;
+
+// const arr2 = []
+// arr.forEach((el) => arr2.push(isBelow(el)))
+// console.log(arr2);
