@@ -10,9 +10,9 @@ console.log(capitalize("hello world this is a test"));
 
 // Other alternative
 
-function capitalize(str) {
-  return str.replace(/\b\w/g, (char) => char.toUpperCase());
-}
+// function capitalize(str) {
+//   return str.replace(/\b\w/g, (char) => char.toUpperCase());
+// }
 
 console.log(capitalize("hello world this is a test"));
 
@@ -122,3 +122,14 @@ const people = [
 ];
 
 console.log(filterByAge(people, 18));
+
+// COMPOSE FUNCTION
+
+const compose = (...fns) => fns.reduceRight((val, fn) => fn(val), initialVal);
+
+const addOne = (num) => num + 1;
+const double = (num) => num * 2;
+
+const addOneAndDouble = compose(double, addOne);
+
+console.log(addOneAndDouble(2));
