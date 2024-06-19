@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css.css" />
+    <script
+      src="https://kit.fontawesome.com/ca52d6ed5c.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Image Gallery</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="gallery-container">
+        <!-- Images will be dynamically added here -->
+      </div>
+
+      <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" id="lightbox-close"><i class="fa-sharp fa-solid fa-xmark"></i></button>
+        <img class="lightbox-image" id="lightbox-image" src="" alt="" />
+        <div class="lightbox-caption" id="lightbox-caption"></div>
+        <button class="lightbox-prev" id="lightbox-prev">
+          <i class="fa-solid fa-caret-left"></i>
+        </button>
+        <button class="lightbox-next" id="lightbox-next">
+          <i class="fa-solid fa-caret-right"></i>
+        </button>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
