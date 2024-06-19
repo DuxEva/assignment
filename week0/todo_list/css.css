@@ -63,7 +63,7 @@ body {
 .add-button:active {
   background: #27ae60;
 }
-
+/* TASKS CONTAINER */
 .task-list {
   display: flex;
   flex-direction: column;
@@ -72,6 +72,7 @@ body {
   margin: 0;
 }
 
+/* TASK ITEM CONTAINER */
 .task-item {
   padding: 10px;
   background: #ecf0f1;

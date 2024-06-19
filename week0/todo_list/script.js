@@ -1,4 +1,4 @@
-'use strict'
+"use strict";
 // Define tasks array
 let tasks = [];
 
@@ -87,7 +87,11 @@ function editTask(index) {
   const task = tasks[index];
   document.getElementById("title").value = task.title;
   document.getElementById("description").value = task.description;
-  document.getElementById("dueDate").value = task.dueDate;
+
+  // Format the dueDate to match datetime-local input format (YYYY-MM-DDTHH:mm)
+  const dueDate = new Date(task.dueDate);
+  const formattedDueDate = dueDate.toISOString().slice(0, 16);
+  document.getElementById("dueDate").value = formattedDueDate;
 
   // Change submit button to update button
   const submitButton = document.querySelector(".add-button");
@@ -96,17 +100,11 @@ function editTask(index) {
     updateTask(index);
   };
 }
+
 function updateTask(index) {
   const title = document.getElementById("title").value.trim();
   const description = document.getElementById("description").value.trim();
   const dueDate = document.getElementById("dueDate").value.trim();
-
-  // Check if all fields are empty (only happens when updating an existing task)
-  if (title === "" && description === "" && dueDate === "") {
-    // No need to update task if all fields are empty
-    resetForm();
-    return;
-  }
 
   if (title === "" || description === "" || dueDate === "") {
     alert("Please provide a title, description, and due date for the task.");
@@ -134,7 +132,6 @@ function resetForm() {
     addTaskFrom(event);
   };
 }
-
 
 function deleteTask(index) {
   tasks.splice(index, 1);
@@ -170,4 +167,3 @@ document.getElementById("taskForm").addEventListener("submit", addTaskFrom);
 
 // Initial task added for demonstration
 addTask("Task 1", "Description 1", "2023-06-20T12:00");
-
