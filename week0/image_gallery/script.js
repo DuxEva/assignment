@@ -1,4 +1,3 @@
-// script.js
 document.addEventListener("DOMContentLoaded", function () {
   const images = [
     { full: "images/image1.jpg", caption: "Image 1" },
@@ -18,6 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const lightboxClose = document.getElementById("lightbox-close");
   const lightboxPrev = document.getElementById("lightbox-prev");
   const lightboxNext = document.getElementById("lightbox-next");
+  const lightboxCaption = document.getElementById("lightbox-caption"); // Select caption element
   let currentIndex = 0;
 
   // Create thumbnails
@@ -36,6 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function openLightbox(index) {
     currentIndex = index;
     lightboxImage.src = images[currentIndex].full;
+    lightboxCaption.textContent = images[currentIndex].caption;
     lightbox.style.display = "flex";
     updateNavigationButtons();
   }

@@ -17,15 +17,23 @@
       </div>
 
       <div class="lightbox" id="lightbox">
-        <button class="lightbox-close" id="lightbox-close"><i class="fa-sharp fa-solid fa-xmark"></i></button>
-        <img class="lightbox-image" id="lightbox-image" src="" alt="" />
-        <div class="lightbox-caption" id="lightbox-caption"></div>
-        <button class="lightbox-prev" id="lightbox-prev">
-          <i class="fa-solid fa-caret-left"></i>
+        <button class="lightbox-close" id="lightbox-close">
+          <i class="fa-sharp fa-solid fa-xmark"></i>
         </button>
-        <button class="lightbox-next" id="lightbox-next">
-          <i class="fa-solid fa-caret-right"></i>
-        </button>
+        <div class="lightbox-content">
+          <div class="lightbox-image-container">
+            <img class="lightbox-image" id="lightbox-image" src="" alt="" />
+          </div>
+          <div class="lightbox-caption" id="lightbox-caption"></div>
+        </div>
+        <div class="lightbox-navigation">
+          <button class="lightbox-prev" id="lightbox-prev">
+            <i class="fa-solid fa-caret-left"></i>
+          </button>
+          <button class="lightbox-next" id="lightbox-next">
+            <i class="fa-solid fa-caret-right"></i>
+          </button>
+        </div>
       </div>
     </div>
     <script src="script.js"></script>
