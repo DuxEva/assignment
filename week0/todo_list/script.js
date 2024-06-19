@@ -1,17 +1,21 @@
-// script.js
-
 let tasks = [];
 
 function addTask(title, description, dueDate) {
   const task = {
     title: title,
     description: description,
-    dueDate: dueDate,
+    dueDate: formatDate(dueDate),
     completed: false,
   };
 
   tasks.push(task);
   renderTasks();
+}
+
+function formatDate(dateString) {
+  const options = { year: "numeric", month: "long", day: "numeric" };
+  const date = new Date(dateString);
+  return date.toLocaleDateString(options);
 }
 
 addTask("Task 1", "Description 1", "2021-09-01");
@@ -72,12 +76,19 @@ function renderTasks() {
   });
 }
 
+// Add task to the list
 function addTaskFrom(event) {
   event.preventDefault();
 
-  const title = document.getElementById("title").value;
-  const description = document.getElementById("description").value;
-  const dueDate = document.getElementById("dueDate").value;
+  const title = document.getElementById("title").value.trim();
+  const description = document.getElementById("description").value.trim();
+  const dueDate = document.getElementById("dueDate").value.trim();
+
+  // Validate inputs
+  if (title === "" || description === "" || dueDate === "") {
+    alert("Please provide a title, description, and due date for the task.");
+    return;
+  }
 
   addTask(title, description, dueDate);
 
@@ -85,3 +96,5 @@ function addTaskFrom(event) {
   document.getElementById("description").value = "";
   document.getElementById("dueDate").value = "";
 }
+
+document.getElementById("taskForm").addEventListener("submit", addTaskFrom);
