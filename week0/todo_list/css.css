@@ -3,6 +3,7 @@ html {
   background: #191d2b;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 body {
@@ -17,7 +18,7 @@ body {
   border-radius: 9px;
   padding: 20px;
   max-height: 85vh;
-  width: 500px;
+  width: 700px;
   overflow-y: auto;
   overflow-x: hidden;
 }
@@ -79,12 +80,8 @@ body {
   border-radius: 5px;
 }
 
-.task-title {
+strong{
   margin-bottom: 5px;
-}
-
-.task-description {
-  margin-bottom: 5px; /* Adjust spacing as needed */
 }
 
 .task-button {
@@ -142,4 +139,18 @@ button {
 
 .hidden {
   display: none;
+}
+
+.sort-button{
+  background: #367e54;
+  color: white;
+  padding: 10px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.sort-button:hover {
+  background: #27ae60;
 }

@@ -1,6 +1,15 @@
 "use strict";
+
 // Define tasks array
 let tasks = [];
+const sortButton = document.querySelector(".sort-button");
+
+// Add event listener to sort button
+
+sortButton.addEventListener("click", function () {
+  sortTasksByDate();
+  renderTasks();
+})
 
 function addTask(title, description, dueDate) {
   const task = {
@@ -26,6 +35,12 @@ function formatDate(dateString) {
   return date.toLocaleDateString("en-US", options);
 }
 
+function sortTasksByDate() {
+  tasks.sort((a, b) => {
+    return new Date(a.dueDate) - new Date(b.dueDate);
+  });
+}
+
 function renderTasks() {
   const taskList = document.getElementById("taskList");
   taskList.innerHTML = "";
@@ -34,7 +49,7 @@ function renderTasks() {
     const taskItem = document.createElement("div");
     taskItem.classList.add("task-item");
 
-    const taskTitle = document.createElement("h3");
+    const taskTitle = document.createElement("strong");
     taskTitle.textContent = task.title;
     taskItem.appendChild(taskTitle);
 
@@ -167,3 +182,6 @@ document.getElementById("taskForm").addEventListener("submit", addTaskFrom);
 
 // Initial task added for demonstration
 addTask("Task 1", "Description 1", "2023-06-20T12:00");
+
+// Function to sort tasks by due date
+

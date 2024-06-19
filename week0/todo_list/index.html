@@ -14,15 +14,9 @@
             id="title"
             class="header-item"
             type="text"
-            placeholder="Here to add task"
-            required
+            placeholder="Task Title"
           />
-          <input
-            id="dueDate"
-            class="header-item"
-            type="datetime-local"
-            required
-          />
+          <input id="dueDate" class="header-item" type="datetime-local" />
           <button
             class="header-item add-button"
             type="button"
@@ -34,13 +28,13 @@
         <textarea
           name="description"
           id="description"
-          cols="250"
+          cols="50"
           rows="5"
           placeholder="Task Description"
           class="description"
-          required
         ></textarea>
       </form>
+      <button class="header-item sort-button">Sort by Due Date</button>
       <div id="taskList" class="task-list"></div>
     </div>
     <script src="./script.js"></script>
