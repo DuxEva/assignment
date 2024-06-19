@@ -1,3 +1,5 @@
+'use strict'
+// Define tasks array
 let tasks = [];
 
 function addTask(title, description, dueDate) {
@@ -13,12 +15,16 @@ function addTask(title, description, dueDate) {
 }
 
 function formatDate(dateString) {
-  const options = { year: "numeric", month: "long", day: "numeric" };
+  const options = {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+  };
   const date = new Date(dateString);
-  return date.toLocaleDateString(options);
+  return date.toLocaleDateString("en-US", options);
 }
-
-addTask("Task 1", "Description 1", "2021-09-01");
 
 function renderTasks() {
   const taskList = document.getElementById("taskList");
@@ -40,32 +46,33 @@ function renderTasks() {
     taskDueDate.textContent = `Due: ${task.dueDate}`;
     taskItem.appendChild(taskDueDate);
 
-    const taskButton = document.createElement("button");
-    taskButton.classList.add("task-button");
-
-    const taskIcon = document.createElement("i");
-    taskIcon.classList.add("fas", "fa-trash", "delete-btn");
-    taskButton.appendChild(taskIcon);
-
-    taskButton.addEventListener("click", function () {
-      tasks.splice(index, 1);
-      renderTasks();
+    // Edit button
+    const editButton = document.createElement("button");
+    editButton.classList.add("task-button", "edit-btn");
+    editButton.textContent = "Edit";
+    editButton.addEventListener("click", function () {
+      editTask(index);
     });
+    taskItem.appendChild(editButton);
 
-    taskItem.appendChild(taskButton);
+    // Delete button
+    const deleteButton = document.createElement("button");
+    deleteButton.classList.add("task-button", "delete-btn");
+    deleteButton.textContent = "Delete";
+    deleteButton.addEventListener("click", function () {
+      deleteTask(index);
+    });
+    taskItem.appendChild(deleteButton);
 
+    // Complete button
     const completeButton = document.createElement("button");
-    completeButton.classList.add("task-button");
-
-    const completeIcon = document.createElement("i");
-    completeIcon.classList.add("fas", "fa-check", "complete-btn");
-    completeButton.appendChild(completeIcon);
-
+    completeButton.classList.add("task-button", "complete-btn");
+    completeButton.textContent = task.completed
+      ? "Mark Incomplete"
+      : "Mark Complete";
     completeButton.addEventListener("click", function () {
-      task.completed = !task.completed;
-      renderTasks();
+      toggleComplete(index);
     });
-
     taskItem.appendChild(completeButton);
 
     if (task.completed) {
@@ -76,7 +83,69 @@ function renderTasks() {
   });
 }
 
-// Add task to the list
+function editTask(index) {
+  const task = tasks[index];
+  document.getElementById("title").value = task.title;
+  document.getElementById("description").value = task.description;
+  document.getElementById("dueDate").value = task.dueDate;
+
+  // Change submit button to update button
+  const submitButton = document.querySelector(".add-button");
+  submitButton.textContent = "Update";
+  submitButton.onclick = function () {
+    updateTask(index);
+  };
+}
+function updateTask(index) {
+  const title = document.getElementById("title").value.trim();
+  const description = document.getElementById("description").value.trim();
+  const dueDate = document.getElementById("dueDate").value.trim();
+
+  // Check if all fields are empty (only happens when updating an existing task)
+  if (title === "" && description === "" && dueDate === "") {
+    // No need to update task if all fields are empty
+    resetForm();
+    return;
+  }
+
+  if (title === "" || description === "" || dueDate === "") {
+    alert("Please provide a title, description, and due date for the task.");
+    return;
+  }
+
+  tasks[index].title = title;
+  tasks[index].description = description;
+  tasks[index].dueDate = formatDate(dueDate);
+
+  renderTasks();
+
+  resetForm();
+}
+
+function resetForm() {
+  document.getElementById("title").value = "";
+  document.getElementById("description").value = "";
+  document.getElementById("dueDate").value = "";
+
+  // Reset update button to "Submit"
+  const submitButton = document.querySelector(".add-button");
+  submitButton.textContent = "Submit";
+  submitButton.onclick = function (event) {
+    addTaskFrom(event);
+  };
+}
+
+
+function deleteTask(index) {
+  tasks.splice(index, 1);
+  renderTasks();
+}
+
+function toggleComplete(index) {
+  tasks[index].completed = !tasks[index].completed;
+  renderTasks();
+}
+
 function addTaskFrom(event) {
   event.preventDefault();
 
@@ -98,3 +167,7 @@ function addTaskFrom(event) {
 }
 
 document.getElementById("taskForm").addEventListener("submit", addTaskFrom);
+
+// Initial task added for demonstration
+addTask("Task 1", "Description 1", "2023-06-20T12:00");
+

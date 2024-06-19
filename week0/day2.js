@@ -125,7 +125,7 @@ console.log(filterByAge(people, 18));
 
 // COMPOSE FUNCTION
 
-const compose = (...fns) => initialValue => fns.reduceRight((val, fn) => fn(val), initialValue);
+const compose = (...fns) => initialValue => fns.reduce((val, fn) => fn(val), initialValue);
 
 const addOne = (num) => num + 1;
 const double = (num) => num * 2;
