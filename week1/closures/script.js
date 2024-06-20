@@ -55,19 +55,19 @@ counter();
 console.dir(counter);
 // counter.increase();
 
-// function createTimer(duration, elementId) {
-//   let remainingTime = duration;
-//   const element = document.getElementById(elementId);
+function countDown(duration, elementId) {
+  let remainingTime = duration;
+  const element = document.getElementById(elementId);
 
-//   const timerInterval = setInterval(() => {
-//     if (remainingTime > 0) {
-//       remainingTime--;
-//       element.textContent = `Time remaining: ${remainingTime}s`;
-//     } else {
-//       clearInterval(timerInterval);
-//       console.log("Timer has ended.");
-//     }
-//   }, 1000);
-// }
+  const timerInterval = setInterval(() => {
+    if (remainingTime > 0) {
+      remainingTime--;
+      element.textContent = `Time remaining: ${remainingTime}s`;
+    } else {
+      clearInterval(timerInterval);
+      console.log("Timer has ended.");
+    }
+  }, 1000);
+}
 
-// createTimer(10, "timer1");
+countDown(10, "timer1");
