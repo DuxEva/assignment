@@ -1,55 +1,58 @@
-// "use strict";
-// const Person = {
-//   name: "Katie",
-//   age: 30,
-//   greet() {
-//     console.log(
-//       `Hello, my name is ${this.name} and I'm ${this.age} years old.`
-//     );
-//   },
-// };
+"use strict";
+const Person = {
+  name: "Katie",
+  age: 30,
+  greet(color) {
+    console.log(
+      `Hello, my name is ${this.name} and I'm ${this.age} years old. my Favorite color is ${color}`
+    );
+  },
+};
 
-// // Person.greet();
+// Person.greet();
 
-// // // Using call(), apply(), and bind()
-// const anotherPerson = { name: "Reis", age: 25 };
+// // Using call(), apply(), and bind()
+const anotherPerson = { name: "Reis", age: 25 };
 
-// // // call
-// Person.greet.call(anotherPerson, "Hello", "World");
+// // call
+Person.greet.call(anotherPerson, 'Black');
 
-// // apply
-// Person.greet.apply(anotherPerson);
+// apply
+Person.greet.apply(anotherPerson, ['White']);
 
-// // bind
-// const greetBob = Person.greet.bind(anotherPerson);
-// greetBob();
+// bind
+const greetReis = Person.greet.bind(anotherPerson);
+greetReis('Gray');
 
-// document
-//   .getElementById("myButton")
-//   .addEventListener("click", function handleClick() {
-//     console.log(this.id);
-//     console.log(this.textContent);
-//   });
+document
+  .getElementById("myButton")
+  .addEventListener("click", function handleClick() {
+    console.log(this.id);
+    console.log(this.textContent);
+  });
 
-// document.getElementById("myButton").addEventListener("click", () => {
-//   console.log(this.id);
-//   console.log(this.textContent);
-// });
-// // console.log(btn);
+document.getElementById("myButton").addEventListener("click", () => {
+  console.log(this.id);
+  console.log(this.textContent);
+});
+// console.log(btn);
 
-// function testClosure() {
-//   let count = 0;
+function testClosure() {
+  let count = 0;
 
-//   console.log(this);
-//   return function increase() {
-//     count++;
-//     console.log(count);
-//     console.log(this);
-//   };
-// }
+  console.log(this);
+  return function increase() {
+    count++;
+    console.log(count);
+    // console.log(this);
+  };
+}
 
-// const counter = testClosure();
-// counter.increase();
+const counter = testClosure();
+counter();
+counter();
+counter();
+console.dir(counter);
 // counter.increase();
 
 // function createTimer(duration, elementId) {
