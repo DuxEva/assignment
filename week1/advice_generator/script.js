@@ -6,7 +6,7 @@ const adviceBtn = document.querySelector(".btn");
 
 const getAdvice = function () {
   message.textContent = "Loading advice...";
-  advice.textContent = "Advice...";
+  // advice.textContent = "Advice...";
   fetch("https://api.adviceslip.com/advice")
     .then((response) => {
       if (!response.ok) {
@@ -15,7 +15,9 @@ const getAdvice = function () {
       return response.json();
     })
     .then((data) => {
-      message.textContent = data.slip.advice;
+      // i need advice to be between quotes
+      message.innerHTML = `&ldquo; ${data.slip.advice} &rdquo;`;
+      // message.textContent = `&lsquo;${data.slip.advice}&rsquo;`;
       advice.textContent = `Advice #${data.slip.id}`;
     })
     .catch((error) => {

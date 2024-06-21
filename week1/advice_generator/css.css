@@ -7,7 +7,8 @@ body {
   /* font-size: 28px; */
   background: hsl(218, 23%, 16%);
   color: white;
-  font-family: "poppins", sans-serif;
+  font-family: "Manrope", sans-serif;
+  font-weight: 800;
 }
 
 .container {
@@ -22,29 +23,24 @@ body {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  /* justify-content: space-around; */
+  justify-content: space-evenly;
+  align-items: center;
   position: relative;
-  width: 490px;
-  height: 250px;
+  width: 530px;
+  min-height: 332px;
   background: hsl(217, 19%, 24%);
   border-radius: 10px;
   padding: 20px;
 }
 
-.desktop-container {
-  position: absolute;
-  bottom: 20%;
-  left: 5%;
-  margin-top: 15px;
-}
-
 .mobile-container {
   display: none;
-  position: absolute;
 }
 
 .desktop-img {
   display: block;
+  width: 64px;
+  height: 64px;
 }
 .mobile-img {
   display: none;
@@ -54,7 +50,7 @@ body {
   position: absolute;
   left: 45%;
   bottom: -10%;
-  padding: 13px 15px;
+  padding: 15px 17px;
   border: none;
   outline: none;
   background: hsl(150, 100%, 66%);
@@ -63,7 +59,7 @@ body {
 }
 
 .btn:hover {
-  box-shadow: 0 0 10px 5px hsl(150, 100%, 66%);
+  box-shadow: 0 0 15px 4px hsl(150, 100%, 66%);
 }
 
 #advice {
@@ -94,9 +90,6 @@ body {
   }
   .mobile-container {
     display: block;
-    bottom: 20%;
-    left: 11%;
-    margin-top: 15px;
   }
   .desktop-img {
     display: none;
@@ -113,8 +106,5 @@ body {
 @media only screen and (max-width: 380px) {
   .mobile-container {
     display: block;
-    bottom: 20%;
-    left: 6%;
-    margin-top: 15px;
   }
 }
