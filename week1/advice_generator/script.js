@@ -4,29 +4,22 @@ const message = document.querySelector(".advice-message");
 const advice = document.querySelector("#advice");
 const adviceBtn = document.querySelector(".btn");
 
-const getAdvice = function () {
+const generateAdvice = async function () {
   message.textContent = "Loading advice...";
-  // advice.textContent = "Advice...";
-  fetch("https://api.adviceslip.com/advice")
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error("Network response was not ok " + response.statusText);
-      }
-      return response.json();
-    })
-    .then((data) => {
-      // i need advice to be between quotes
-      message.innerHTML = `&ldquo; ${data.slip.advice} &rdquo;`;
-      // message.textContent = `&lsquo;${data.slip.advice}&rsquo;`;
-      advice.textContent = `Advice #${data.slip.id}`;
-    })
-    .catch((error) => {
-      console.error("Error fetching advice:", error);
-      message.textContent = "Failed to fetch advice. Please try again.";
-      advice.textContent = "Error";
-    });
-};
+  try {
+    const response = await fetch("https://api.adviceslip.com/advice");
+    if (!response.ok) {
+      throw new Error("Network response was not ok " + response.statusText);
+    }
+    const data = await response.json();
+    message.innerHTML = `&ldquo; ${data.slip.advice} &rdquo;`;
+    advice.textContent = `Advice #${data.slip.id}`;
+  } catch (error) {
+    console.error("Error fetching advice:", error);
+    message.textContent = "Failed to fetch advice. Please try again.";
+    advice.textContent = "Error";
+  }
+}
 
-getAdvice();
-
-adviceBtn.addEventListener("click", getAdvice);
+generateAdvice();
+adviceBtn.addEventListener("click", generateAdvice);
