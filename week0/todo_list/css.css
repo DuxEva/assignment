@@ -154,3 +154,7 @@ button {
 .sort-button:hover {
   background: #27ae60;
 }
+
+.button-spacing {
+  margin-right: 10px;
+}

@@ -9,7 +9,7 @@ const sortButton = document.querySelector(".sort-button");
 sortButton.addEventListener("click", function () {
   sortTasksByDate();
   renderTasks();
-})
+});
 
 function addTask(title, description, dueDate) {
   const task = {
@@ -63,7 +63,7 @@ function renderTasks() {
 
     // Edit button
     const editButton = document.createElement("button");
-    editButton.classList.add("task-button", "edit-btn");
+    editButton.classList.add("task-button", "edit-btn", "button-spacing");
     editButton.textContent = "Edit";
     editButton.addEventListener("click", function () {
       editTask(index);
@@ -72,7 +72,7 @@ function renderTasks() {
 
     // Delete button
     const deleteButton = document.createElement("button");
-    deleteButton.classList.add("task-button", "delete-btn");
+    deleteButton.classList.add("task-button", "delete-btn", "button-spacing");
     deleteButton.textContent = "Delete";
     deleteButton.addEventListener("click", function () {
       deleteTask(index);
@@ -81,7 +81,11 @@ function renderTasks() {
 
     // Complete button
     const completeButton = document.createElement("button");
-    completeButton.classList.add("task-button", "complete-btn");
+    completeButton.classList.add(
+      "task-button",
+      "complete-btn",
+      "button-spacing"
+    );
     completeButton.textContent = task.completed
       ? "Mark Incomplete"
       : "Mark Complete";
@@ -184,4 +188,3 @@ document.getElementById("taskForm").addEventListener("submit", addTaskFrom);
 addTask("Task 1", "Description 1", "2023-06-20T12:00");
 
 // Function to sort tasks by due date
-
