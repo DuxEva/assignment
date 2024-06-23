@@ -1,3 +1,5 @@
+'use strict';
+
 const superHero = {
   name: "Batman",
   secretIdentity: "Bruce Wayne",
@@ -87,9 +89,9 @@ const names = characters.map((character) => character.name);
 
 function battle(hero1, hero2) {
   console.log(`${hero1.name} and ${hero2.name} are battling!`);
-  // Simple battle logic
   const winner = Math.random() > 0.5 ? hero1.name : hero2.name;
   console.log(`${winner} wins!`);
+  document.getElementById("result").innerText = `${winner} wins!`;
 }
 
 const superman = new Superhero(
