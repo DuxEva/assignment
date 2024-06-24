@@ -86,11 +86,11 @@ const names = characters.map((character) => character.name);
 
 // Using forEach to log names
 // characters.forEach((character) => console.log(character.name));
-
+const res = document.getElementById("result");
 function battle(hero1, hero2) {
   console.log(`${hero1.name} and ${hero2.name} are battling!`);
   const winner = Math.random() > 0.5 ? hero1.name : hero2.name;
-  document.getElementById("result").innerText = `${winner} wins! 🏆🎉`;
+  res.innerText = `${winner} wins! 🏆🎉`;
 }
 
 const superman = new Superhero(
@@ -107,4 +107,7 @@ const batman = new Superhero(
 );
 
 const button = document.getElementById("battle");
-button.addEventListener("click", () => battle(superman, batman));
+button.addEventListener("click", () =>{ 
+  res.innerText = "Battling...";
+  setTimeout(() => battle(superman, batman), 3000);
+});
