@@ -40,6 +40,7 @@ Watch.prototype.getFormattedTime = function () {
 };
 
 // Method to get 12-hour time with AM/PM
+
 Watch.prototype.get12HourTime = function () {
   let hours = this.hours;
   const minutes = this.minutes;
@@ -54,11 +55,13 @@ const myClock = new Watch();
 console.log(myClock.getFormattedTime());
 console.log(myClock.get12HourTime());
 
-// console.log(myClock);
 
 // ALARM CLOCK IMPLEMENTATION
 
 let is24HourFormat = true;
+
+const changeHourFormat = document.getElementById("change-format");
+const alarmButton = document.getElementById("alarm");
 
 function updateClock() {
   const clock = new Watch();
@@ -100,3 +103,5 @@ function checkAlarm(clock) {
 
 setInterval(updateClock, 1000);
 updateClock();
+changeHourFormat.addEventListener("click", toggleFormat);
+alarmButton.addEventListener("click", setAlarm);
