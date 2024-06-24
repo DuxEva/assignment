@@ -90,8 +90,7 @@ const names = characters.map((character) => character.name);
 function battle(hero1, hero2) {
   console.log(`${hero1.name} and ${hero2.name} are battling!`);
   const winner = Math.random() > 0.5 ? hero1.name : hero2.name;
-  console.log(`${winner} wins!`);
-  document.getElementById("result").innerText = `${winner} wins!`;
+  document.getElementById("result").innerText = `${winner} wins! 🏆🎉`;
 }
 
 const superman = new Superhero(
@@ -106,9 +105,6 @@ const batman = new Superhero(
   ["Martial Arts", "Detective Skills"],
   "None"
 );
-const wonderWoman = new Superhero(
-  "Wonder Woman",
-  "Diana Prince",
-  ["Super Strength", "Flight"],
-  "None"
-);
+
+const button = document.getElementById("battle");
+button.addEventListener("click", () => battle(superman, batman));
